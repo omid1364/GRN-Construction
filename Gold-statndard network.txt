@@ -1,0 +1,81 @@
+############GOLD statndard ##################
+# Make Gold-standard network based on 12 transcription factors.
+require(igraph)
+
+#zd
+zD<-as.matrix(zD[,-2])
+AD1<-t(as.matrix(get.adjacency(graph.edgelist(as.matrix(zD), directed=FALSE))[1,]))
+
+#cad
+cad<-as.matrix(cad[-1:-2])
+o2<-rep(1,273)
+cad<-cbind(o2,cad)
+AD2<-t(as.matrix(get.adjacency(graph.edgelist(as.matrix(cad), directed=FALSE))[1,]))
+AD2<-cbind(AD2,c(0))
+
+#da
+da<-as.matrix(da[-1:-2])
+o3<-rep(1,795)
+da<-cbind(o3,da)
+AD3<-t(as.matrix(get.adjacency(graph.edgelist(as.matrix(da), directed=FALSE))[1,]))
+
+#dl
+dl<-as.matrix(dl[-1:-2])
+o4<-rep(1,1503)
+dl<-cbind(o4,dl)
+AD4<-t(as.matrix(get.adjacency(graph.edgelist(as.matrix(dl), directed=FALSE))[1,]))
+
+#hb
+hb<-as.matrix(hb[-1:-2])
+o5<-rep(1,358)
+hb<-cbind(o5,hb)
+AD5<-t(as.matrix(get.adjacency(graph.edgelist(as.matrix(hb), directed=FALSE))[1,]))
+
+#kr
+kr<-as.matrix(kr[-1:-2])
+o6<-rep(1,518)
+kr<-cbind(o6,kr)
+AD6<-t(as.matrix(get.adjacency(graph.edgelist(as.matrix(kr), directed=FALSE))[1,]))
+
+#mad
+mad<-as.matrix(mad[-1:-2])
+o7<-rep(1,40)
+mad<-cbind(o7,mad)
+AD7<-t(as.matrix(get.adjacency(graph.edgelist(as.matrix(mad), directed=FALSE))[1,]))
+AD7<-cbind(AD7,matrix(rep(0,94),1,94))
+
+#prd
+prd<-as.matrix(prd[-1:-2])
+o8<-rep(1,313)
+prd<-cbind(o8,prd)
+AD8<-t(as.matrix(get.adjacency(graph.edgelist(as.matrix(prd), directed=FALSE))[1,]))
+AD8<-cbind(AD8,matrix(rep(0,2),1,2))
+
+#run
+run<-as.matrix(run[-1:-2])
+o9<-rep(1,158)
+run<-cbind(o9,run)
+AD9<-t(as.matrix(get.adjacency(graph.edgelist(as.matrix(run), directed=FALSE))[1,]))
+AD9<-cbind(AD9,matrix(rep(0,29),1,29))
+
+#spl1
+spl1<-as.matrix(spl1[-1:-2])
+o10<-rep(1,212)
+spl1<-cbind(o10,spl1)
+AD10<-t(as.matrix(get.adjacency(graph.edgelist(as.matrix(spl1), directed=FALSE))[1,]))
+AD10<-cbind(AD10,matrix(rep(0,29),1,29))
+
+#sna
+sna<-as.matrix(sna[-1:-2])
+o11<-rep(1,291)
+sna<-cbind(o11,sna)
+AD11<-t(as.matrix(get.adjacency(graph.edgelist(as.matrix(sna), directed=FALSE))[1,]))
+AD11<-cbind(AD11,matrix(rep(0,1),1,1))
+
+#twi
+twi<-as.matrix(twi[-1:-2])
+o12<-rep(1,1163)
+twi<-cbind(o12,twi)
+AD12<-t(as.matrix(get.adjacency(graph.edgelist(as.matrix(twi), directed=FALSE))[1,]))
+
+gold<-rbind(AD1,AD2,AD3,AD4,AD5,AD6,AD7,AD8,AD9,AD10,AD11,AD12)

@@ -1,0 +1,46 @@
+##Evaluation due to  species amel chip-chip Gold standard.
+#results of 12 TF factors based on results of F-MAP.
+
+#NOTE : the number of p is 2049
+
+evaluate<-function(theta)  {       #theta: the adjacent matrix resulted of FMAP
+				   # numbers indicate the number of rows corresponding to the specific tf.				
+
+  E<-rbind(theta[650,],theta[1221,],theta[1260,],theta[664,],theta[1366,],
+  theta[793,],theta[823,],theta[1557,],theta[1587,],theta[1615,],theta[1624,],
+  theta[1679,])              
+
+  matches<-matrix(0,12,2049)
+  for ( l in 1:12)  {
+     for ( k in 1:2049){
+     if(E[l,k]==1 && gold[l,k]==1)  {matches[l,k]=1}      else {
+     if(E[l,k]==0 && gold[l,k]==0)  {matches[l,k]=2}      else {
+     if(E[l,k]==0 && gold[l,k]==1)  {matches[l,k]=3}      else {
+     matches[l,k]=4}      
+                    }
+ } 
+   } 
+}
+
+ matches
+ table(matches)
+ table(E)
+ return(list(table(matches),table(E)))
+
+}
+
+##accuracy measures##
+stat<-evaluate (theta)[[1]]
+
+precision<-stat[1]/(stat[1]+stat[4])
+sensitivity<-stat[1]/(stat[1]+stat[3])
+specificity<-stat[2]/(stat[2]+stat[4])
+accuracy<-(stat[1]+stat[2])/(stat[1]+stat[2]+stat[3]+stat[4])
+fall.out<-stat[4]/(stat[4]+stat[2])
+
+
+
+
+
+
+
